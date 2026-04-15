@@ -31,6 +31,7 @@
                 <th>Description</th>
                 <th>Quantity</th>
                 <th>Category</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -43,6 +44,9 @@
                 <td>{{ item.description }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.category.name }}</td>
+                <td>
+                    <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">Request</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
