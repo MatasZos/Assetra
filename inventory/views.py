@@ -26,27 +26,35 @@ def item_list(request):
 @login_required
 def request_item(request, item_id):
     if not request.user.groups.filter(name='Student').exists():
-        return redirect('item_list')
-    
+        return redirect('home')
+
     item = Item.objects.get(id=item_id)
-    
     Request.objects.create(user=request.user, item=item)
     return redirect('item_list')
 
-@staff_member_required
+@login_required
 def manage_requests(request):
+    if not request.user.groups.filter(name='Staff').exists():
+        return redirect('home')
+
     requests = Request.objects.all()
     return render(request, 'inventory/manage_requests.html', {'requests': requests})
 
-@staff_member_required
+@login_required
 def approve_request(request, request_id):
+    if not request.user.groups.filter(name='Staff').exists():
+        return redirect('home')
+
     req = Request.objects.get(id=request_id)
     req.status = 'APPROVED'
     req.save()
     return redirect('manage_requests')
 
-@staff_member_required
+@login_required
 def reject_request(request, request_id):
+    if not request.user.groups.filter(name='Staff').exists():
+        return redirect('home')
+
     req = Request.objects.get(id=request_id)
     req.status = 'REJECTED'
     req.save()
