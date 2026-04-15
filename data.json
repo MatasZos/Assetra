@@ -9,7 +9,7 @@
   {"model": "inventory.item", "pk": 4, "fields": {"name": "Maths Book", "description": "Algebra, Calculus, and Statistics Maths Workbook", "quantity": 15, "category": 3}},
 
   {"model": "inventory.request", "pk": 1, "fields": {"user": 3, "item": 1, "status": "PENDING", "request_date": "2026-04-15T17:31:36.778Z"}},
-  {"model": "inventory.request", "pk": 2, "fields": {"user": 3, "item": 3, "status": "APPROVED", "request_date": "2026-04-15T17:31:46.654Z"}},
+  {"model": "inventory.request", "pk": 2, "fields": {"user": 3, "item": 3, "status": "PENDING", "request_date": "2026-04-15T17:31:46.654Z"}},
 
   {"model": "auth.group", "pk": 1, "fields": {"name": "Admin", "permissions": []}},
   {"model": "auth.group", "pk": 2, "fields": {"name": "Staff", "permissions": []}},
