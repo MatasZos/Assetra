@@ -8,6 +8,7 @@
 
 from django.shortcuts import render
 from .models import Item
+from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import redirect
 from .models import Request
@@ -20,6 +21,8 @@ def item_list(request):
     items = Item.objects.all()
     return render(request, 'inventory/items.html', {'items': items})
 
+
+@login_required
 def request_item(request, item_id):
     item = Item.objects.get(id=item_id)
     user = request.user
