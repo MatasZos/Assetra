@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .models import Category, Item, Request
+from django.contrib.auth.models import Group
 
 
 class ModelTestCase(TestCase):
@@ -35,9 +36,12 @@ class ViewTestCase(TestCase):
 
 
 class UseCaseTest(TestCase):
+
     def setUp(self):
         self.category = Category.objects.create(name="Electronics")
         self.user = User.objects.create_user(username="student", password="password")
+        group = Group.objects.create(name="Student")
+        self.user.groups.add(group)
 
         self.item = Item.objects.create(name="Keyboard",description="Mechanical Keyboard",quantity=5,category=self.category)
 
