@@ -7,9 +7,14 @@
 <body>
 
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <div class="container-fluid">
-        <span class="navbar-brand">Assetra</span>
+        <a class="navbar-brand" href="/">Assetra</a>
+
+        <div>
+            <a class="btn btn-outline-light me-2" href="/">Home</a>
+            <a class="btn btn-outline-light" href="/items/">Items</a>
+        </div>
     </div>
 </nav>
 
@@ -31,7 +36,7 @@
 
 
         <tbody>
-            
+
             {% for item in items %}
             <tr>
                 <td>{{ item.name }}</td>
