@@ -24,8 +24,10 @@ def item_list(request):
 
 @login_required
 def request_item(request, item_id):
+    if not request.user.groups.filter(name='Students').exists():
+        return redirect('item_list')
+    
     item = Item.objects.get(id=item_id)
-    user = request.user
     
     Request.objects.create(user=user, item=item)
     return redirect('item_list')
