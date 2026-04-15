@@ -9,6 +9,10 @@
 from django.shortcuts import render
 from .models import Item
 
+def home(request):
+    return render(request, 'inventory/home.html')
+
+
 def item_list(request):
     items = Item.objects.all()
     return render(request, 'inventory/items.html', {'items': items})
