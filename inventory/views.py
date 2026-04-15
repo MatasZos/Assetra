@@ -9,6 +9,7 @@
 from django.shortcuts import render
 from .models import Item
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import staff_member_required    
 
 from django.shortcuts import redirect
 from .models import Request
@@ -31,3 +32,22 @@ def request_item(request, item_id):
     
     Request.objects.create(user=request.user, item=item)
     return redirect('item_list')
+
+@staff_member_required
+def manage_requests(request):
+    requests = Request.objects.all()
+    return render(request, 'inventory/manage_requests.html', {'requests': requests})
+
+@staff_member_required
+def approve_request(request, request_id):
+    req = Request.objects.get(id=request_id)
+    req.status = 'APPROVED'
+    req.save()
+    return redirect('manage_requests')
+
+@staff_member_required
+def reject_request(request, request_id):
+    req = Request.objects.get(id=request_id)
+    req.status = 'REJECTED'
+    req.save()
+    return redirect('manage_requests')
