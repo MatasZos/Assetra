@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 #from django.http import HttpResponse
 
 # Create your views here.
@@ -9,6 +7,8 @@ from django.shortcuts import render
 #
 
 from django.shortcuts import render
-
+from .models import Item
+    
 def home(request):
-    return render(request, 'inventory/home.html')
+    items = Item.objects.all()
+    return render(request, 'inventory/home.html', {'items': items})
