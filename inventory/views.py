@@ -24,5 +24,5 @@ def request_item(request, item_id):
     item = Item.objects.get(id=item_id)
     user = request.user
     
-    Requesr.objects.create(user=user, item=item)
+    Request.objects.create(user=user, item=item)
     return redirect('item_list')
