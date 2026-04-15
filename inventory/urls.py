@@ -9,5 +9,5 @@ urlpatterns = [
     path('manage_requests/', views.manage_requests, name='manage_requests'),
     path('approve/<int:request_id>/', views.approve_request, name='approve_request'),
     path('reject/<int:request_id>/', views.reject_request, name='reject_request'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
