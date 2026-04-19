@@ -1,6 +1,7 @@
 {% extends "inventory/base.html" %}
 {% block title %}Items - Assetra{% endblock %}
 {% block content %}
+<a href="/" class="btn btn-secondary mb-3">← Back</a>
 <h2>Inventory Items</h2>
 {% if items %}
 <table class="table table-striped table-hover mt-4">
@@ -31,19 +32,16 @@
             </td>
             <td>{{ item.category.name }}</td>
             <td>
-                {% if user.is_authenticated and user.groups.first.name == "Student" %}
+                {% if user.groups.first.name == "Student" %}
                     {% if item.quantity > 0 %}
-                        <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">
-                            Request
-                        </a>
+                        <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">Request</a>
                     {% else %}
                         <span class="text-danger">Out of Stock</span>
                     {% endif %}
                 {% endif %}
-                {% if user.is_authenticated and user.groups.first.name == "Staff" %}
-                    <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">
-                        + Add
-                    </a>
+
+                {% if user.groups.first.name == "Staff" %}
+                    <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">+ Add</a>
                 {% endif %}
             </td>
         </tr>

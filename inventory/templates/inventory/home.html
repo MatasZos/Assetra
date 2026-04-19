@@ -1,57 +1,47 @@
 {% extends "inventory/base.html" %}
+{% block title %}Home - Assetra{% endblock %}
 {% block content %}
 
-
 <h1>Welcome to Assetra</h1>
-<p>School Inventory Management System</p>
-
 
 {% if user.is_authenticated %}
-    <p class="text-muted">
-        Logged in as <strong>{{ user.username }}</strong> ({{ user.groups.first.name }})
-    </p>
+<p class="text-muted">
+    Logged in as {{ user.username }} ({{ user.groups.first.name }})
+</p>
 {% endif %}
+
 <div class="row mt-5">
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Inventory</h5>
-            <p>View and explore available items</p>
-            <a href="/items/" class="btn btn-primary">View Items</a>
+    {% if user.groups.first.name == "Student" %}
+        <div class="col-md-6">
+            <div class="card p-4 text-center">
+                <h4>View Items</h4>
+                <a href="/items/" class="btn btn-primary">Go</a>
+            </div>
         </div>
-    </div>
 
-
-
-    {% if user.is_authenticated and user.groups.first.name == "Student" %}
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Request Items</h5>
-            <p>Request items from inventory</p>
-            <a href="/items/" class="btn btn-success">Request Now</a>
+        <div class="col-md-6">
+            <div class="card p-4 text-center">
+                <h4>My Requests</h4>
+                <a href="/my_requests/" class="btn btn-success">Go</a>
+            </div>
         </div>
-    </div>
+    {% endif %}
+    {% if user.groups.first.name == "Staff" %}
+        <div class="col-md-6">
+            <div class="card p-4 text-center">
+                <h4>Manage Requests</h4>
+                <a href="/manage_requests/" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-4 text-center">
+                <h4>Manage Stock</h4>
+                <a href="/items/" class="btn btn-success">Go</a>
+            </div>
+        </div>
     {% endif %}
 
-    {% if user.is_authenticated and user.groups.first.name == "Staff" %}
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Manage Requests</h5>
-            <p>Approve or reject item requests</p>
-            <a href="/manage_requests/" class="btn btn-warning">Manage</a>
-        </div>
-    </div>
-    {% endif %}
-
-
-    
-    {% if user.is_authenticated and user.is_superuser %}
-    <div class="col-md-4">
-        <div class="card p-3">
-            <h5>Admin Panel</h5>
-            <p>Full system control</p>
-            <a href="/admin/" class="btn btn-dark">Go to Admin</a>
-        </div>
-    </div>
-    {% endif %}
 </div>
+
 {% endblock %}

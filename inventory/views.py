@@ -27,6 +27,13 @@ def item_list(request):
     items = Item.objects.all()
     return render(request, 'inventory/items.html', {'items': items})
 
+@login_required
+def my_requests(request):
+    requests = Request.objects.filter(user=request.user)
+    return render(request, 'inventory/my_requests.html', {
+        'requests': requests
+    })
+
 
 @login_required
 def request_item(request, item_id):
