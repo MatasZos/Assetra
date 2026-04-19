@@ -15,7 +15,11 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from .models import Request
 
+@login_required
 def home(request):
+    if request.user.groups.filter(name='Staff').exists():
+        return redirect('staff_dashboard')
+
     return render(request, 'inventory/home.html')
 
 
@@ -82,3 +86,23 @@ def reject_request(request, request_id):
     messages.success(request, "Request rejected.")
 
     return redirect('manage_requests')
+
+@login_required
+def staff_dashboard(request):
+    if not request.user.groups.filter(name='Staff').exists():
+        return redirect('home')
+
+    return render(request, 'inventory/staff_dashboard.html')
+
+@login_required
+def add_stock(request, item_id):
+    if not request.user.groups.filter(name='Staff').exists():
+        return redirect('home')
+
+    item = Item.objects.get(id=item_id)
+    item.quantity += 1
+    item.save()
+
+    messages.success(request, "Stock increased!")
+
+    return redirect('item_list')
