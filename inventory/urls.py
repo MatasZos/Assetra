@@ -20,4 +20,7 @@ urlpatterns = [
     path('reject/<int:request_id>/', views.reject_request, name='reject_request'),
     path('add_stock/<int:item_id>/', views.add_stock, name='add_stock'),
     path('my_requests/', views.my_requests, name='my_requests'),
+    
+    path('my_items/', views.my_items, name='my_items'),
+    path('return/<int:request_id>/', views.return_item, name='return_item'),
 ]

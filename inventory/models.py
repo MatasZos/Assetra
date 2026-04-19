@@ -22,10 +22,11 @@ class Item(models.Model):
     
 class Request(models.Model):
     STATUS_CHOICES = [
-        ('PENDING', 'Pending'),
-        ('APPROVED', 'Approved'),
-        ('REJECTED', 'Rejected'),
-    ]
+    ('PENDING', 'Pending'),
+    ('APPROVED', 'Approved'),
+    ('REJECTED', 'Rejected'),
+    ('RETURNED', 'Returned'),
+]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')

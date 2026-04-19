@@ -33,6 +33,14 @@ def my_requests(request):
     return render(request, 'inventory/my_requests.html', {
         'requests': requests
     })
+    
+@login_required
+def my_items(request):
+    items = Request.objects.filter(user=request.user, status='APPROVED')
+
+    return render(request, 'inventory/my_items.html', {
+        'items': items
+    })
 
 
 @login_required
@@ -43,6 +51,23 @@ def request_item(request, item_id):
     item = Item.objects.get(id=item_id)
     Request.objects.create(user=request.user, item=item)
     return redirect('item_list')
+
+@login_required
+def return_item(request, request_id):
+    req = Request.objects.get(id=request_id)
+    if req.user != request.user:
+        return redirect('home')
+
+    if req.status != 'APPROVED':
+        return redirect('my_items')
+    req.item.quantity += 1
+    req.item.save()
+    req.status = 'RETURNED'
+    req.save()
+
+    messages.success(request, "Item returned successfully!")
+
+    return redirect('my_items')
 
 @login_required
 def manage_requests(request):
