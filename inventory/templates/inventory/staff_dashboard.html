@@ -1,6 +1,6 @@
 {% extends "inventory/base.html" %}
 
-{% block title %}Staff Dashboard - Assetra{% endblock %}
+{% block title %}Staff Dashboard{% endblock %}
 
 {% block content %}
 
@@ -11,7 +11,6 @@
     <div class="col-md-6">
         <div class="card p-4 text-center">
             <h4>Manage Requests</h4>
-            <p>Approve or reject item requests</p>
             <a href="/manage_requests/" class="btn btn-primary">Go</a>
         </div>
     </div>
@@ -19,11 +18,9 @@
     <div class="col-md-6">
         <div class="card p-4 text-center">
             <h4>Manage Stock</h4>
-            <p>View and update inventory stock</p>
             <a href="/items/" class="btn btn-success">Go</a>
         </div>
     </div>
 
 </div>
-
 {% endblock %}

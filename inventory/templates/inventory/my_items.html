@@ -1,34 +1,32 @@
 {% extends "inventory/base.html" %}
-{% block title %}My Items - Assetra{% endblock %}
+
+{% block title %}My Items{% endblock %}
+
 {% block content %}
 <a href="/" class="btn btn-secondary mb-3">← Back</a>
 <h2>My Items</h2>
 
 {% if items %}
-<table class="table table-striped mt-4">
-    <thead>
-        <tr>
-            <th>Item</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for req in items %}
-        <tr>
-            <td>{{ req.item.name }}</td>
-            <td>
-                <a href="/return/{{ req.id }}/" 
-                   class="btn btn-danger btn-sm"
-                   onclick="return confirm('Return this item?');">
-                   Return
-                </a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+<table class="table">
+    <tr>
+        <th>Item</th>
+        <th>Action</th>
+    </tr>
+
+    {% for req in items %}
+    <tr>
+        <td>{{ req.item.name }}</td>
+        <td>
+            <a href="/return/{{ req.id }}/" class="btn btn-danger btn-sm"
+               onclick="return confirm('Return this item?');">
+               Return
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 {% else %}
-<p class="text-muted">You have no items currently.</p>
+<p>You have no items.</p>
 {% endif %}
 
 {% endblock %}

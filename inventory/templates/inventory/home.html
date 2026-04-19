@@ -4,32 +4,27 @@
 
 <h1>Welcome to Assetra</h1>
 
-{% if user.is_authenticated %}
 <p class="text-muted">
     Logged in as {{ user.username }} ({{ user.groups.first.name }})
 </p>
-{% endif %}
 
 <div class="row mt-5">
     {% if user.groups.first.name == "Student" %}
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>View Items</h4>
-                <p>Browse available inventory</p>
                 <a href="/items/" class="btn btn-primary">Go</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>My Requests</h4>
-                <p>Track your requests</p>
                 <a href="/my_requests/" class="btn btn-success">Go</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>My Items</h4>
-                <p>Return items you currently have</p>
                 <a href="/my_items/" class="btn btn-warning">Go</a>
             </div>
         </div>
@@ -38,14 +33,12 @@
         <div class="col-md-6">
             <div class="card p-4 text-center">
                 <h4>Manage Requests</h4>
-                <p>Approve or reject requests</p>
                 <a href="/manage_requests/" class="btn btn-primary">Go</a>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card p-4 text-center">
                 <h4>Manage Stock</h4>
-                <p>View and update inventory</p>
                 <a href="/items/" class="btn btn-success">Go</a>
             </div>
         </div>
