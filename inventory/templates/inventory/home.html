@@ -3,47 +3,73 @@
 {% block content %}
 
 <h1>Welcome to Assetra</h1>
-
-<p class="text-muted">
-    Logged in as {{ user.username }} ({{ user.groups.first.name }})
-</p>
+<p class="text-muted">Logged in as {{ user.username }} ({{ user.groups.first.name }})</p>
 
 <div class="row mt-5">
     {% if user.groups.first.name == "Student" %}
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>View Items</h4>
+                <p class="text-muted small">Browse available inventory</p>
                 <a href="/items/" class="btn btn-primary">Go</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>My Requests</h4>
+                <p class="text-muted small">Track your item requests</p>
                 <a href="/my_requests/" class="btn btn-success">Go</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card p-4 text-center">
                 <h4>My Items</h4>
+                <p class="text-muted small">Items currently with you</p>
                 <a href="/my_items/" class="btn btn-warning">Go</a>
             </div>
         </div>
     {% endif %}
+
     {% if user.groups.first.name == "Staff" %}
         <div class="col-md-6">
             <div class="card p-4 text-center">
                 <h4>Manage Requests</h4>
+                <p class="text-muted small">Approve or reject student requests</p>
                 <a href="/manage_requests/" class="btn btn-primary">Go</a>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card p-4 text-center">
                 <h4>Manage Stock</h4>
+                <p class="text-muted small">Add stock to inventory items</p>
                 <a href="/items/" class="btn btn-success">Go</a>
             </div>
         </div>
     {% endif %}
 
+    {% if user.groups.first.name == "Manager" %}
+        <div class="col-md-4">
+            <div class="card p-4 text-center">
+                <h4>Dashboard</h4>
+                <p class="text-muted small">Overview and stats</p>
+                <a href="/manager/" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center">
+                <h4>Manage Items</h4>
+                <p class="text-muted small">Add, edit or remove items</p>
+                <a href="/items/" class="btn btn-success">Go</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 text-center">
+                <h4>Categories</h4>
+                <p class="text-muted small">Manage item categories</p>
+                <a href="/categories/" class="btn btn-warning">Go</a>
+            </div>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

@@ -2,10 +2,16 @@
 {% block title %}Items - Assetra{% endblock %}
 {% block content %}
 <a href="/" class="btn btn-secondary mb-3">← Back</a>
-<h2>Inventory Items</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Inventory Items</h2>
+    {% if user.groups.first.name == "Manager" %}
+        <a href="/items/add/" class="btn btn-primary">+ Add Item</a>
+    {% endif %}
+</div>
+
 {% if items %}
-<table class="table table-striped table-hover mt-4">
-    <thead>
+<table class="table table-striped table-hover mt-2">
+    <thead class="table-dark">
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -23,11 +29,11 @@
             <td>{{ item.quantity }}</td>
             <td>
                 {% if item.quantity > 5 %}
-                    <span class="text-success">Good</span>
+                    <span class="badge bg-success">Good</span>
                 {% elif item.quantity > 0 %}
-                    <span class="text-warning">Low</span>
+                    <span class="badge bg-warning text-dark">Low</span>
                 {% else %}
-                    <span class="text-danger">Out</span>
+                    <span class="badge bg-danger">Out</span>
                 {% endif %}
             </td>
             <td>{{ item.category.name }}</td>
@@ -41,7 +47,12 @@
                 {% endif %}
 
                 {% if user.groups.first.name == "Staff" %}
-                    <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">+ Add</a>
+                    <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">+ Add Stock</a>
+                {% endif %}
+
+                {% if user.groups.first.name == "Manager" %}
+                    <a href="/items/{{ item.id }}/edit/" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/items/{{ item.id }}/delete/" class="btn btn-danger btn-sm">Delete</a>
                 {% endif %}
             </td>
         </tr>
@@ -49,6 +60,6 @@
     </tbody>
 </table>
 {% else %}
-<p>No items available.</p>
+<p class="text-muted mt-3">No items available.</p>
 {% endif %}
 {% endblock %}

@@ -1,0 +1,57 @@
+{% extends "inventory/base.html" %}
+{% block title %}Manager Dashboard - Assetra{% endblock %}
+{% block content %}
+
+<h2>Manager Dashboard</h2>
+<p class="text-muted">Overview of the school inventory system.</p>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card text-center p-3">
+            <h1 class="display-5">{{ total_items }}</h1>
+            <p class="text-muted">Total Items</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3">
+            <h1 class="display-5">{{ total_categories }}</h1>
+            <p class="text-muted">Categories</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3">
+            <h1 class="display-5">{{ total_requests }}</h1>
+            <p class="text-muted">Total Requests</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-center p-3">
+            <h1 class="display-5 text-warning">{{ pending_count }}</h1>
+            <p class="text-muted">Pending</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <h4>Manage Items</h4>
+            <a href="/items/" class="btn btn-primary mt-2">View Items</a>
+            <a href="/items/add/" class="btn btn-outline-primary mt-2">Add Item</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <h4>Manage Categories</h4>
+            <a href="/categories/" class="btn btn-success mt-2">View Categories</a>
+            <a href="/categories/add/" class="btn btn-outline-success mt-2">Add Category</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-4 text-center">
+            <h4>View All Requests</h4>
+            <a href="/all_requests/" class="btn btn-secondary mt-2">All Requests</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

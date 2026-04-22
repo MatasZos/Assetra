@@ -1,21 +1,208 @@
 [
-  {"model": "inventory.category", "pk": 1, "fields": {"name": "Electronics", "description": "Electronics for classrooms"}},
-  {"model": "inventory.category", "pk": 2, "fields": {"name": "Laboratory Equipment", "description": "Laboratory Equipment for Biology & Chemistry classes"}},
-  {"model": "inventory.category", "pk": 3, "fields": {"name": "Books", "description": "Books for Core Subjects"}},
-
-  {"model": "inventory.item", "pk": 1, "fields": {"name": "Laptops", "description": "Dell Laptop", "quantity": 10, "category": 1}},
-  {"model": "inventory.item", "pk": 2, "fields": {"name": "Projector", "description": "HD Projector for classrooms", "quantity": 10, "category": 1}},
-  {"model": "inventory.item", "pk": 3, "fields": {"name": "Microscope", "description": "Microscope for Biology experiments", "quantity": 10, "category": 2}},
-  {"model": "inventory.item", "pk": 4, "fields": {"name": "Maths Book", "description": "Algebra, Calculus, and Statistics Maths Workbook", "quantity": 15, "category": 3}},
-
-  {"model": "inventory.request", "pk": 1, "fields": {"user": 3, "item": 1, "status": "PENDING", "request_date": "2026-04-15T17:31:36.778Z"}},
-  {"model": "inventory.request", "pk": 2, "fields": {"user": 3, "item": 3, "status": "PENDING", "request_date": "2026-04-15T17:31:46.654Z"}},
-
-  {"model": "auth.group", "pk": 1, "fields": {"name": "Admin", "permissions": []}},
-  {"model": "auth.group", "pk": 2, "fields": {"name": "Staff", "permissions": []}},
-  {"model": "auth.group", "pk": 3, "fields": {"name": "Student", "permissions": []}},
-
-  {"model": "auth.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$1200000$pyxz3AMRaOdqlnPRJLXlAU$DQbpwQOsrXpJE47jYKvkBXwHUZTmtsRJv0oZ4HcLw6g=", "last_login": null, "is_superuser": true, "username": "admin", "first_name": "", "last_name": "", "email": "admin@admin.com", "is_staff": true, "is_active": true, "date_joined": "2026-04-14T23:55:11Z", "groups": [1], "user_permissions": []}},
-  {"model": "auth.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$1200000$fSRQSrlc3rvBacdt4DKTZk$MdmyTe7MSbewEoUadA6xtlwwSQGAaLAD5703ccbtcCQ=", "last_login": null, "is_superuser": false, "username": "staff1", "first_name": "", "last_name": "", "email": "", "is_staff": false, "is_active": true, "date_joined": "2026-04-15T17:27:22Z", "groups": [2], "user_permissions": []}},
-  {"model": "auth.user", "pk": 3, "fields": {"password": "pbkdf2_sha256$1200000$DEpbG7zoN0LiPGLWG03adq$Lf+Mf0DbXxicqxIXsKte0mMkt7KDKhu+f9zTJYI3IIY=", "last_login": null, "is_superuser": false, "username": "user1", "first_name": "", "last_name": "", "email": "", "is_staff": false, "is_active": true, "date_joined": "2026-04-15T17:27:58Z", "groups": [3], "user_permissions": []}}
+  {
+    "model": "inventory.category",
+    "pk": 1,
+    "fields": {
+      "name": "Electronics",
+      "description": "Electronics for classrooms"
+    }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 2,
+    "fields": {
+      "name": "Laboratory Equipment",
+      "description": "Laboratory Equipment for Biology and Chemistry classes"
+    }
+  },
+  {
+    "model": "inventory.category",
+    "pk": 3,
+    "fields": {
+      "name": "Books",
+      "description": "Books for Core Subjects"
+    }
+  },
+  {
+    "model": "inventory.item",
+    "pk": 1,
+    "fields": {
+      "name": "Laptops",
+      "description": "Dell Laptop",
+      "quantity": 10,
+      "category": 1
+    }
+  },
+  {
+    "model": "inventory.item",
+    "pk": 2,
+    "fields": {
+      "name": "Projector",
+      "description": "HD Projector for classrooms",
+      "quantity": 10,
+      "category": 1
+    }
+  },
+  {
+    "model": "inventory.item",
+    "pk": 3,
+    "fields": {
+      "name": "Microscope",
+      "description": "Microscope for Biology experiments",
+      "quantity": 10,
+      "category": 2
+    }
+  },
+  {
+    "model": "inventory.item",
+    "pk": 4,
+    "fields": {
+      "name": "Maths Book",
+      "description": "Algebra, Calculus, and Statistics Maths Workbook",
+      "quantity": 15,
+      "category": 3
+    }
+  },
+  {
+    "model": "inventory.item",
+    "pk": 5,
+    "fields": {
+      "name": "Bunsen Burner",
+      "description": "Bunsen burner for Chemistry experiments",
+      "quantity": 8,
+      "category": 2
+    }
+  },
+  {
+    "model": "inventory.request",
+    "pk": 1,
+    "fields": {
+      "user": 3,
+      "item": 1,
+      "status": "PENDING",
+      "request_date": "2026-04-15T17:31:36.778Z"
+    }
+  },
+  {
+    "model": "inventory.request",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "item": 3,
+      "status": "PENDING",
+      "request_date": "2026-04-15T17:31:46.654Z"
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Admin",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Staff",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "Student",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "Manager",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$pyxz3AMRaOdqlnPRJLXlAU$DQbpwQOsrXpJE47jYKvkBXwHUZTmtsRJv0oZ4HcLw6g=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@admin.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-04-14T23:55:11Z",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$fSRQSrlc3rvBacdt4DKTZk$MdmyTe7MSbewEoUadA6xtlwwSQGAaLAD5703ccbtcCQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "staff1",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-15T17:27:22Z",
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$DEpbG7zoN0LiPGLWG03adq$Lf+Mf0DbXxicqxIXsKte0mMkt7KDKhu+f9zTJYI3IIY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-15T17:27:58Z",
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$DEpbG7zoN0LiPGLWG03adq$Lf+Mf0DbXxicqxIXsKte0mMkt7KDKhu+f9zTJYI3IIY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "manager1",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-15T18:00:00Z",
+      "groups": [
+        4
+      ],
+      "user_permissions": []
+    }
+  }
 ]
