@@ -1,32 +1,42 @@
 {% extends "inventory/base.html" %}
-
-{% block title %}My Items{% endblock %}
-
+{% block title %}My Items - Assetra{% endblock %}
 {% block content %}
-<a href="/" class="btn btn-secondary mb-3">← Back</a>
-<h2>My Items</h2>
+
+<div class="d-flex justify-content-between align-items-center page-header">
+    <h2 class="mb-0"><i class="bi bi-bag-check-fill me-2"></i>My Items</h2>
+    <a href="/" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left me-1"></i>Back</a>
+</div>
 
 {% if items %}
-<table class="table">
-    <tr>
-        <th>Item</th>
-        <th>Action</th>
-    </tr>
-
-    {% for req in items %}
-    <tr>
-        <td>{{ req.item.name }}</td>
-        <td>
-            <a href="/return/{{ req.id }}/" class="btn btn-danger btn-sm"
-               onclick="return confirm('Return this item?');">
-               Return
-            </a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for req in items %}
+                <tr>
+                    <td><i class="bi bi-box me-1 text-muted"></i>{{ req.item.name }}</td>
+                    <td>
+                        <a href="/return/{{ req.id }}/"
+                           class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to return {{ req.item.name }}?');">
+                            <i class="bi bi-arrow-return-left me-1"></i>Return
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% else %}
-<p>You have no items.</p>
+<div class="alert alert-info mt-3">
+    <i class="bi bi-info-circle me-2"></i>You have no items currently. <a href="/items/">Browse items</a>
+</div>
 {% endif %}
-
 {% endblock %}

@@ -1,35 +1,49 @@
 {% extends "inventory/base.html" %}
-
-{% block title %}My Requests{% endblock %}
-
+{% block title %}My Requests - Assetra{% endblock %}
 {% block content %}
-<a href="/" class="btn btn-secondary mb-3">← Back</a>
-<h2>My Requests</h2>
-{% if requests %}
-<table class="table">
-    <tr>
-        <th>Item</th>
-        <th>Status</th>
-    </tr>
 
-    {% for req in requests %}
-    <tr>
-        <td>{{ req.item.name }}</td>
-        <td>
-            {% if req.status == "APPROVED" %}
-                <span class="badge bg-success">Approved</span>
-            {% elif req.status == "REJECTED" %}
-                <span class="badge bg-danger">Rejected</span>
-            {% elif req.status == "RETURNED" %}
-                <span class="badge bg-secondary">Returned</span>
-            {% else %}
-                <span class="badge bg-warning text-dark">Pending</span>
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="d-flex justify-content-between align-items-center page-header">
+    <h2 class="mb-0"><i class="bi bi-clock-history me-2"></i>My Requests</h2>
+    <a href="/" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left me-1"></i>Back</a>
+</div>
+
+{% if requests %}
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for req in requests %}
+                <tr>
+                    <td><i class="bi bi-box me-1 text-muted"></i>{{ req.item.name }}</td>
+                    <td>
+                        {% if req.status == "APPROVED" %}
+                            <span class="badge bg-success"><i class="bi bi-check me-1"></i>Approved</span>
+                        {% elif req.status == "REJECTED" %}
+                            <span class="badge bg-danger"><i class="bi bi-x me-1"></i>Rejected</span>
+                        {% elif req.status == "RETURNED" %}
+                            <span class="badge bg-secondary"><i class="bi bi-arrow-return-left me-1"></i>Returned</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark"><i class="bi bi-hourglass me-1"></i>Pending</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-muted small">{{ req.request_date|date:"d M Y" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% else %}
-<p>No requests yet.</p>
+<div class="alert alert-info mt-3">
+    <i class="bi bi-info-circle me-2"></i>You have not made any requests yet.
+    <a href="/items/" class="ms-2">Browse items</a>
+</div>
 {% endif %}
 {% endblock %}

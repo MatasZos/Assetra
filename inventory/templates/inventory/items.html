@@ -1,65 +1,80 @@
 {% extends "inventory/base.html" %}
 {% block title %}Items - Assetra{% endblock %}
 {% block content %}
-<a href="/" class="btn btn-secondary mb-3">← Back</a>
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Inventory Items</h2>
-    {% if user.groups.first.name == "Manager" %}
-        <a href="/items/add/" class="btn btn-primary">+ Add Item</a>
-    {% endif %}
+
+<div class="d-flex justify-content-between align-items-center page-header">
+    <h2 class="mb-0"><i class="bi bi-grid-fill me-2"></i>Inventory Items</h2>
+    <div class="d-flex gap-2">
+        {% if user.groups.first.name == "Manager" %}
+            <a href="/items/add/" class="btn btn-primary btn-sm">
+                <i class="bi bi-plus-lg me-1"></i>Add Item
+            </a>
+        {% endif %}
+        <a href="/" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrow-left me-1"></i>Back</a>
+    </div>
 </div>
 
 {% if items %}
-<table class="table table-striped table-hover mt-2">
-    <thead class="table-dark">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Status</th>
-            <th>Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>
-                {% if item.quantity > 5 %}
-                    <span class="badge bg-success">Good</span>
-                {% elif item.quantity > 0 %}
-                    <span class="badge bg-warning text-dark">Low</span>
-                {% else %}
-                    <span class="badge bg-danger">Out</span>
-                {% endif %}
-            </td>
-            <td>{{ item.category.name }}</td>
-            <td>
-                {% if user.groups.first.name == "Student" %}
-                    {% if item.quantity > 0 %}
-                        <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">Request</a>
-                    {% else %}
-                        <span class="text-danger">Out of Stock</span>
-                    {% endif %}
-                {% endif %}
-
-                {% if user.groups.first.name == "Staff" %}
-                    <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">+ Add Stock</a>
-                {% endif %}
-
-                {% if user.groups.first.name == "Manager" %}
-                    <a href="/items/{{ item.id }}/edit/" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="/items/{{ item.id }}/delete/" class="btn btn-danger btn-sm">Delete</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="card mt-3">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td class="fw-semibold">{{ item.name }}</td>
+                    <td class="text-muted small">{{ item.description }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        {% if item.quantity > 5 %}
+                            <span class="badge bg-success"><i class="bi bi-check me-1"></i>Good</span>
+                        {% elif item.quantity > 0 %}
+                            <span class="badge bg-warning text-dark"><i class="bi bi-exclamation me-1"></i>Low</span>
+                        {% else %}
+                            <span class="badge bg-danger"><i class="bi bi-x me-1"></i>Out</span>
+                        {% endif %}
+                    </td>
+                    <td><span class="badge bg-secondary">{{ item.category.name }}</span></td>
+                    <td>
+                        {% if user.groups.first.name == "Student" %}
+                            {% if item.quantity > 0 %}
+                                <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-send me-1"></i>Request
+                                </a>
+                            {% else %}
+                                <span class="text-danger small">Out of Stock</span>
+                            {% endif %}
+                        {% endif %}
+                        {% if user.groups.first.name == "Staff" %}
+                            <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">
+                                <i class="bi bi-plus me-1"></i>Add Stock
+                            </a>
+                        {% endif %}
+                        {% if user.groups.first.name == "Manager" %}
+                            <a href="/items/{{ item.id }}/edit/" class="btn btn-warning btn-sm me-1">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <a href="/items/{{ item.id }}/delete/" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% else %}
-<p class="text-muted mt-3">No items available.</p>
+<div class="alert alert-info mt-3"><i class="bi bi-info-circle me-2"></i>No items available.</div>
 {% endif %}
 {% endblock %}

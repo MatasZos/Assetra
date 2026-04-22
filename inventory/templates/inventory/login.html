@@ -1,15 +1,42 @@
 {% extends "inventory/base.html" %}
-
-{% block title %}Login{% endblock %}
-
+{% block title %}Login - Assetra{% endblock %}
 {% block content %}
 
-<h2>Login</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card p-4">
+            <div class="text-center mb-4">
+                <i class="bi bi-boxes text-dark" style="font-size:2.5rem;"></i>
+                <h3 class="mt-2">Assetra</h3>
+                <p class="text-muted small">School Inventory Management</p>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">{{ field.label }}</label>
+                        <input type="{{ field.field.widget.input_type }}"
+                               name="{{ field.html_name }}"
+                               class="form-control"
+                               {% if field.value %}value="{{ field.value }}"{% endif %}>
+                        {% if field.errors %}
+                            <div class="text-danger small mt-1">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-dark btn-lg">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                    </button>
+                </div>
+            </form>
+            <hr class="my-3">
+            <p class="text-muted small text-center mb-1">Demo accounts:</p>
+            <p class="text-muted small text-center mb-0">
+                user1 / staff1 / manager1
+            </p>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
