@@ -1,1 +1,1 @@
-web: gunicorn school_inventory.wsgi
+web: python manage.py migrate && python manage.py loaddata data.json && gunicorn school_inventory.wsgi
