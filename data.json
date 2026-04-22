@@ -1,41 +1,14 @@
 [
-  {
-    "model": "auth.group",
-    "pk": 1,
-    "fields": {
-      "name": "Admin",
-      "permissions": []
-    }
-  },
-  {
-    "model": "auth.group",
-    "pk": 2,
-    "fields": {
-      "name": "Staff",
-      "permissions": []
-    }
-  },
-  {
-    "model": "auth.group",
-    "pk": 3,
-    "fields": {
-      "name": "Student",
-      "permissions": []
-    }
-  },
-  {
-    "model": "auth.group",
-    "pk": 4,
-    "fields": {
-      "name": "Manager",
-      "permissions": []
-    }
-  },
+  { "model": "auth.group", "pk": 1, "fields": { "name": "Admin", "permissions": [] } },
+  { "model": "auth.group", "pk": 2, "fields": { "name": "Staff", "permissions": [] } },
+  { "model": "auth.group", "pk": 3, "fields": { "name": "Student", "permissions": [] } },
+  { "model": "auth.group", "pk": 4, "fields": { "name": "Manager", "permissions": [] } },
+
   {
     "model": "auth.user",
     "pk": 1,
     "fields": {
-      "password": "pbkdf2_sha256$1200000$pyxz3AMRaOdqlnPRJLXlAU$DQbpwQOsrXpJE47jYKvkBXwHUZTmtsRJv0oZ4HcLw6g=",
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
       "last_login": null,
       "is_superuser": true,
       "username": "admin",
@@ -45,9 +18,7 @@
       "is_staff": true,
       "is_active": true,
       "date_joined": "2026-04-14T23:55:11Z",
-      "groups": [
-        1
-      ],
+      "groups": [1],
       "user_permissions": []
     }
   },
@@ -55,7 +26,7 @@
     "model": "auth.user",
     "pk": 2,
     "fields": {
-      "password": "pbkdf2_sha256$1200000$fSRQSrlc3rvBacdt4DKTZk$MdmyTe7MSbewEoUadA6xtlwwSQGAaLAD5703ccbtcCQ=",
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
       "last_login": null,
       "is_superuser": false,
       "username": "staff1",
@@ -65,9 +36,7 @@
       "is_staff": false,
       "is_active": true,
       "date_joined": "2026-04-15T17:27:22Z",
-      "groups": [
-        2
-      ],
+      "groups": [2],
       "user_permissions": []
     }
   },
@@ -75,7 +44,7 @@
     "model": "auth.user",
     "pk": 3,
     "fields": {
-      "password": "pbkdf2_sha256$1200000$DEpbG7zoN0LiPGLWG03adq$Lf+Mf0DbXxicqxIXsKte0mMkt7KDKhu+f9zTJYI3IIY=",
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
       "last_login": null,
       "is_superuser": false,
       "username": "user1",
@@ -85,9 +54,7 @@
       "is_staff": false,
       "is_active": true,
       "date_joined": "2026-04-15T17:27:58Z",
-      "groups": [
-        3
-      ],
+      "groups": [3],
       "user_permissions": []
     }
   },
@@ -95,7 +62,7 @@
     "model": "auth.user",
     "pk": 4,
     "fields": {
-      "password": "pbkdf2_sha256$1200000$DEpbG7zoN0LiPGLWG03adq$Lf+Mf0DbXxicqxIXsKte0mMkt7KDKhu+f9zTJYI3IIY=",
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
       "last_login": null,
       "is_superuser": false,
       "username": "manager1",
@@ -105,152 +72,26 @@
       "is_staff": false,
       "is_active": true,
       "date_joined": "2026-04-15T18:00:00Z",
-      "groups": [
-        4
-      ],
+      "groups": [4],
       "user_permissions": []
     }
   },
-  {
-    "model": "inventory.category",
-    "pk": 1,
-    "fields": {
-      "name": "Electronics",
-      "description": "Electronic equipment for classrooms"
-    }
-  },
-  {
-    "model": "inventory.category",
-    "pk": 2,
-    "fields": {
-      "name": "Laboratory Equipment",
-      "description": "Laboratory equipment for Biology and Chemistry classes"
-    }
-  },
-  {
-    "model": "inventory.category",
-    "pk": 3,
-    "fields": {
-      "name": "Books",
-      "description": "Books for core subjects"
-    }
-  },
-  {
-    "model": "inventory.category",
-    "pk": 4,
-    "fields": {
-      "name": "Sports Equipment",
-      "description": "Sports equipment for PE classes"
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 1,
-    "fields": {
-      "name": "Laptop",
-      "description": "Dell Latitude laptop for student use",
-      "quantity": 10,
-      "category": 1
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 2,
-    "fields": {
-      "name": "Projector",
-      "description": "HD projector for classroom presentations",
-      "quantity": 10,
-      "category": 1
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 3,
-    "fields": {
-      "name": "Microscope",
-      "description": "Microscope for Biology experiments",
-      "quantity": 10,
-      "category": 2
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 4,
-    "fields": {
-      "name": "Maths Book",
-      "description": "Algebra, Calculus, and Statistics workbook",
-      "quantity": 15,
-      "category": 3
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 5,
-    "fields": {
-      "name": "Bunsen Burner",
-      "description": "Bunsen burner for Chemistry experiments",
-      "quantity": 8,
-      "category": 2
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 6,
-    "fields": {
-      "name": "Football",
-      "description": "Standard size 5 football for PE classes",
-      "quantity": 12,
-      "category": 4
-    }
-  },
-  {
-    "model": "inventory.item",
-    "pk": 7,
-    "fields": {
-      "name": "Physics Textbook",
-      "description": "Senior cycle physics textbook",
-      "quantity": 20,
-      "category": 3
-    }
-  },
-  {
-    "model": "inventory.request",
-    "pk": 1,
-    "fields": {
-      "user": 3,
-      "item": 1,
-      "status": "PENDING",
-      "request_date": "2026-04-15T17:31:36.778Z"
-    }
-  },
-  {
-    "model": "inventory.request",
-    "pk": 2,
-    "fields": {
-      "user": 3,
-      "item": 3,
-      "status": "PENDING",
-      "request_date": "2026-04-15T17:31:46.654Z"
-    }
-  },
-  {
-    "model": "inventory.request",
-    "pk": 3,
-    "fields": {
-      "user": 3,
-      "item": 4,
-      "status": "APPROVED",
-      "request_date": "2026-04-16T09:12:00.000Z"
-    }
-  },
-  {
-    "model": "inventory.request",
-    "pk": 4,
-    "fields": {
-      "user": 3,
-      "item": 6,
-      "status": "RETURNED",
-      "request_date": "2026-04-10T14:00:00.000Z"
-    }
-  }
+
+  { "model": "inventory.category", "pk": 1, "fields": { "name": "Electronics", "description": "Electronic equipment for classrooms" } },
+  { "model": "inventory.category", "pk": 2, "fields": { "name": "Laboratory Equipment", "description": "Laboratory equipment for Biology and Chemistry classes" } },
+  { "model": "inventory.category", "pk": 3, "fields": { "name": "Books", "description": "Books for core subjects" } },
+  { "model": "inventory.category", "pk": 4, "fields": { "name": "Sports Equipment", "description": "Sports equipment for PE classes" } },
+
+  { "model": "inventory.item", "pk": 1, "fields": { "name": "Laptop", "description": "Dell Latitude laptop for student use", "quantity": 10, "category": 1 } },
+  { "model": "inventory.item", "pk": 2, "fields": { "name": "Projector", "description": "HD projector for classroom presentations", "quantity": 10, "category": 1 } },
+  { "model": "inventory.item", "pk": 3, "fields": { "name": "Microscope", "description": "Microscope for Biology experiments", "quantity": 10, "category": 2 } },
+  { "model": "inventory.item", "pk": 4, "fields": { "name": "Maths Book", "description": "Algebra, Calculus, and Statistics workbook", "quantity": 15, "category": 3 } },
+  { "model": "inventory.item", "pk": 5, "fields": { "name": "Bunsen Burner", "description": "Bunsen burner for Chemistry experiments", "quantity": 8, "category": 2 } },
+  { "model": "inventory.item", "pk": 6, "fields": { "name": "Football", "description": "Standard size 5 football for PE classes", "quantity": 12, "category": 4 } },
+  { "model": "inventory.item", "pk": 7, "fields": { "name": "Physics Textbook", "description": "Senior cycle physics textbook", "quantity": 20, "category": 3 } },
+
+  { "model": "inventory.request", "pk": 1, "fields": { "user": 3, "item": 1, "status": "PENDING", "request_date": "2026-04-15T17:31:36.778Z" } },
+  { "model": "inventory.request", "pk": 2, "fields": { "user": 3, "item": 3, "status": "PENDING", "request_date": "2026-04-15T17:31:46.654Z" } },
+  { "model": "inventory.request", "pk": 3, "fields": { "user": 3, "item": 4, "status": "APPROVED", "request_date": "2026-04-16T09:12:00.000Z" } },
+  { "model": "inventory.request", "pk": 4, "fields": { "user": 3, "item": 6, "status": "RETURNED", "request_date": "2026-04-10T14:00:00.000Z" } }
 ]
