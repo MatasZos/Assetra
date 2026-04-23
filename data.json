@@ -1,8 +1,9 @@
 [
-  { "model": "auth.group", "pk": 1, "fields": { "name": "Admin", "permissions": [] } },
-  { "model": "auth.group", "pk": 2, "fields": { "name": "Staff", "permissions": [] } },
+  { "model": "auth.group", "pk": 1, "fields": { "name": "Admin",   "permissions": [] } },
+  { "model": "auth.group", "pk": 2, "fields": { "name": "Staff",   "permissions": [] } },
   { "model": "auth.group", "pk": 3, "fields": { "name": "Student", "permissions": [] } },
   { "model": "auth.group", "pk": 4, "fields": { "name": "Manager", "permissions": [] } },
+  { "model": "auth.group", "pk": 5, "fields": { "name": "User",    "permissions": [] } },
 
   {
     "model": "auth.user",
@@ -54,7 +55,7 @@
       "is_staff": false,
       "is_active": true,
       "date_joined": "2026-04-15T17:27:58Z",
-      "groups": [3],
+      "groups": [5],
       "user_permissions": []
     }
   },
@@ -76,22 +77,67 @@
       "user_permissions": []
     }
   },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "student1",
+      "first_name": "",
+      "last_name": "",
+      "email": "student1@student1.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-15T18:05:00Z",
+      "groups": [3],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1200000$7d8JeZSUxYquSwfHrkFo8c$ODFIjlbDUYyIKRyqW9VaWmTDf5TTSWCsYsiCxrWpMMA=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "student2",
+      "first_name": "",
+      "last_name": "",
+      "email": "student2@student2.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-04-16T09:00:00Z",
+      "groups": [3],
+      "user_permissions": []
+    }
+  },
 
-  { "model": "inventory.category", "pk": 1, "fields": { "name": "Electronics", "description": "Electronic equipment for classrooms" } },
-  { "model": "inventory.category", "pk": 2, "fields": { "name": "Laboratory Equipment", "description": "Laboratory equipment for Biology and Chemistry classes" } },
-  { "model": "inventory.category", "pk": 3, "fields": { "name": "Books", "description": "Books for core subjects" } },
-  { "model": "inventory.category", "pk": 4, "fields": { "name": "Sports Equipment", "description": "Sports equipment for PE classes" } },
+  { "model": "inventory.category", "pk": 1, "fields": { "name": "Electronics",         "description": "Electronic equipment for classrooms" } },
+  { "model": "inventory.category", "pk": 2, "fields": { "name": "Laboratory Equipment","description": "Equipment for Biology and Chemistry experiments" } },
+  { "model": "inventory.category", "pk": 3, "fields": { "name": "Books",               "description": "Textbooks and workbooks" } },
+  { "model": "inventory.category", "pk": 4, "fields": { "name": "Sports Equipment",    "description": "Equipment for Physical Education" } },
+  { "model": "inventory.category", "pk": 5, "fields": { "name": "Art Supplies",        "description": "Materials and tools for Art classes" } },
 
-  { "model": "inventory.item", "pk": 1, "fields": { "name": "Laptop", "description": "Dell Latitude laptop for student use", "quantity": 10, "category": 1 } },
-  { "model": "inventory.item", "pk": 2, "fields": { "name": "Projector", "description": "HD projector for classroom presentations", "quantity": 10, "category": 1 } },
-  { "model": "inventory.item", "pk": 3, "fields": { "name": "Microscope", "description": "Microscope for Biology experiments", "quantity": 10, "category": 2 } },
-  { "model": "inventory.item", "pk": 4, "fields": { "name": "Maths Book", "description": "Algebra, Calculus, and Statistics workbook", "quantity": 15, "category": 3 } },
-  { "model": "inventory.item", "pk": 5, "fields": { "name": "Bunsen Burner", "description": "Bunsen burner for Chemistry experiments", "quantity": 8, "category": 2 } },
-  { "model": "inventory.item", "pk": 6, "fields": { "name": "Football", "description": "Football for PE classes", "quantity": 12, "category": 4 } },
-  { "model": "inventory.item", "pk": 7, "fields": { "name": "Physics Textbook", "description": "Senior cycle physics textbook", "quantity": 20, "category": 3 } },
+  { "model": "inventory.item", "pk": 1, "fields": { "name": "Laptop",           "description": "Dell Latitude laptop for student use",      "quantity": 10, "category": 1 } },
+  { "model": "inventory.item", "pk": 2, "fields": { "name": "Projector",        "description": "HD projector for classroom presentations",  "quantity": 6,  "category": 1 } },
+  { "model": "inventory.item", "pk": 3, "fields": { "name": "Graphing Calculator","description": "Scientific calculator for Maths classes", "quantity": 20, "category": 1 } },
+  { "model": "inventory.item", "pk": 4, "fields": { "name": "Microscope",       "description": "Microscope for Biology experiments",        "quantity": 8,  "category": 2 } },
+  { "model": "inventory.item", "pk": 5, "fields": { "name": "Bunsen Burner",    "description": "Bunsen burner for Chemistry experiments",   "quantity": 10, "category": 2 } },
+  { "model": "inventory.item", "pk": 6, "fields": { "name": "Safety Goggles",   "description": "Protective eyewear for lab work",           "quantity": 25, "category": 2 } },
+  { "model": "inventory.item", "pk": 7, "fields": { "name": "Maths Book",       "description": "Algebra, Calculus and Statistics workbook", "quantity": 15, "category": 3 } },
+  { "model": "inventory.item", "pk": 8, "fields": { "name": "Physics Textbook", "description": "Senior cycle physics textbook",             "quantity": 20, "category": 3 } },
+  { "model": "inventory.item", "pk": 9, "fields": { "name": "Football",        "description": "Football for PE classes",    "quantity": 12, "category": 4 } },
+  { "model": "inventory.item", "pk": 10,"fields": { "name": "Basketball",      "description": "Basketball for PE classes",           "quantity": 8,  "category": 4 } },
+  { "model": "inventory.item", "pk": 11,"fields": { "name": "Paint Set",       "description": "Acrylic paint set",     "quantity": 15, "category": 5 } },
+  { "model": "inventory.item", "pk": 12,"fields": { "name": "Sketchbook",      "description": "A4 sketchbook for Art students",             "quantity": 30, "category": 5 } },
 
-  { "model": "inventory.request", "pk": 1, "fields": { "user": 3, "item": 1, "status": "PENDING", "request_date": "2026-04-15T17:31:36.778Z" } },
-  { "model": "inventory.request", "pk": 2, "fields": { "user": 3, "item": 3, "status": "PENDING", "request_date": "2026-04-15T17:31:46.654Z" } },
-  { "model": "inventory.request", "pk": 3, "fields": { "user": 3, "item": 4, "status": "APPROVED", "request_date": "2026-04-16T09:12:00.000Z" } },
-  { "model": "inventory.request", "pk": 4, "fields": { "user": 3, "item": 6, "status": "RETURNED", "request_date": "2026-04-10T14:00:00.000Z" } }
+  { "model": "inventory.request", "pk": 1, "fields": { "user": 5, "item": 1,  "status": "PENDING",  "request_date": "2026-04-15T17:31:36.778Z" } },
+  { "model": "inventory.request", "pk": 2, "fields": { "user": 5, "item": 4,  "status": "PENDING",  "request_date": "2026-04-15T17:31:46.654Z" } },
+  { "model": "inventory.request", "pk": 3, "fields": { "user": 5, "item": 7,  "status": "APPROVED", "request_date": "2026-04-16T09:12:00.000Z" } },
+  { "model": "inventory.request", "pk": 4, "fields": { "user": 5, "item": 9,  "status": "RETURNED", "request_date": "2026-04-10T14:00:00.000Z" } },
+  { "model": "inventory.request", "pk": 5, "fields": { "user": 6, "item": 3,  "status": "APPROVED", "request_date": "2026-04-17T10:15:00.000Z" } },
+  { "model": "inventory.request", "pk": 6, "fields": { "user": 6, "item": 11, "status": "PENDING",  "request_date": "2026-04-18T11:30:00.000Z" } },
+  { "model": "inventory.request", "pk": 7, "fields": { "user": 6, "item": 6,  "status": "REJECTED", "request_date": "2026-04-14T13:45:00.000Z" } }
 ]
