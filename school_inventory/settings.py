@@ -23,11 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$7wy3xv8)ieb4qrhi874y!d6zgq-^m+8!tm!rxe9%0oq#d*57!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://schoolinventory-production.up.railway.app']
 # Application definition

@@ -29,5 +29,8 @@ urlpatterns = [
     path('categories/add/', views.add_category, name='add_category'),
     path('categories/<int:category_id>/edit/', views.edit_category, name='edit_category'),
     path('all_requests/', views.all_requests, name='all_requests'),
+    
+    # Admin
+    path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
 ]
  
