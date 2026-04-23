@@ -2,10 +2,12 @@
 {% block title %}Items - Assetra{% endblock %}
 {% block content %}
 
+{% with role=user.groups.first.name %}
+
 <div class="d-flex justify-content-between align-items-center page-header">
     <h2 class="mb-0"><i class="bi bi-grid-fill me-2"></i>Inventory Items</h2>
     <div class="d-flex gap-2">
-        {% if user.groups.first.name == "Manager" %}
+        {% if role == "Manager" %}
             <a href="/items/add/" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Add Item
             </a>
@@ -25,7 +27,9 @@
                     <th>Quantity</th>
                     <th>Status</th>
                     <th>Category</th>
-                    <th>Actions</th>
+                    {% if role == "Student" or role == "Staff" or role == "Manager" %}
+                        <th>Actions</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -44,8 +48,10 @@
                         {% endif %}
                     </td>
                     <td><span class="badge bg-secondary">{{ item.category.name }}</span></td>
+
+                    {% if role == "Student" or role == "Staff" or role == "Manager" %}
                     <td>
-                        {% if user.groups.first.name == "Student" %}
+                        {% if role == "Student" %}
                             {% if item.quantity > 0 %}
                                 <a href="/request/{{ item.id }}/" class="btn btn-primary btn-sm">
                                     <i class="bi bi-send me-1"></i>Request
@@ -54,12 +60,12 @@
                                 <span class="text-danger small">Out of Stock</span>
                             {% endif %}
                         {% endif %}
-                        {% if user.groups.first.name == "Staff" %}
+                        {% if role == "Staff" %}
                             <a href="/add_stock/{{ item.id }}/" class="btn btn-success btn-sm">
                                 <i class="bi bi-plus me-1"></i>Add Stock
                             </a>
                         {% endif %}
-                        {% if user.groups.first.name == "Manager" %}
+                        {% if role == "Manager" %}
                             <a href="/items/{{ item.id }}/edit/" class="btn btn-warning btn-sm me-1">
                                 <i class="bi bi-pencil"></i>
                             </a>
@@ -68,6 +74,7 @@
                             </a>
                         {% endif %}
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
@@ -77,4 +84,6 @@
 {% else %}
 <div class="alert alert-info mt-3"><i class="bi bi-info-circle me-2"></i>No items available.</div>
 {% endif %}
+
+{% endwith %}
 {% endblock %}

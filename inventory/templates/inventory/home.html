@@ -36,48 +36,13 @@
         </div>
     {% endif %}
 
-    {% if user.groups.first.name == "Staff" %}
-        <div class="col-md-6">
+    {% if user.groups.first.name == "User" %}
+        <div class="col-md-6 offset-md-3">
             <div class="card card-action p-4 text-center h-100">
-                <div class="mb-3"><i class="bi bi-list-check text-primary" style="font-size:2.5rem;"></i></div>
-                <h5>Manage Requests</h5>
-                <p class="text-muted small">Review and approve or reject pending student requests</p>
-                <a href="/manage_requests/" class="btn btn-primary mt-auto">Go to Requests</a>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card card-action p-4 text-center h-100">
-                <div class="mb-3"><i class="bi bi-plus-circle-fill text-success" style="font-size:2.5rem;"></i></div>
-                <h5>Manage Stock</h5>
-                <p class="text-muted small">View inventory and increase stock levels for items</p>
-                <a href="/items/" class="btn btn-success mt-auto">View Inventory</a>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if user.groups.first.name == "Manager" %}
-        <div class="col-md-4">
-            <div class="card card-action p-4 text-center h-100">
-                <div class="mb-3"><i class="bi bi-speedometer2 text-primary" style="font-size:2.5rem;"></i></div>
-                <h5>Dashboard</h5>
-                <p class="text-muted small">Overview of inventory stats and system activity</p>
-                <a href="/manager/" class="btn btn-primary mt-auto">Open Dashboard</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-action p-4 text-center h-100">
-                <div class="mb-3"><i class="bi bi-pencil-square text-success" style="font-size:2.5rem;"></i></div>
-                <h5>Manage Items</h5>
-                <p class="text-muted small">Add, edit or delete items from the inventory</p>
-                <a href="/items/" class="btn btn-success mt-auto">View Items</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-action p-4 text-center h-100">
-                <div class="mb-3"><i class="bi bi-tags-fill text-warning" style="font-size:2.5rem;"></i></div>
-                <h5>Categories</h5>
-                <p class="text-muted small">Add or edit item categories used across inventory</p>
-                <a href="/categories/" class="btn btn-warning mt-auto">View Categories</a>
+                <div class="mb-3"><i class="bi bi-grid-fill text-primary" style="font-size:2.5rem;"></i></div>
+                <h5>Browse Inventory</h5>
+                <p class="text-muted small">View all items available in the school inventory. You have read-only access — to make requests, please contact a Staff member to upgrade your account to Student.</p>
+                <a href="/items/" class="btn btn-primary mt-auto">View Items</a>
             </div>
         </div>
     {% endif %}
