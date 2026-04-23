@@ -14,9 +14,14 @@ def is_student(user):
  
 def is_manager(user):
     return user.groups.filter(name='Manager').exists()
+
+def is_admin(user):
+    return user.groups.filter(name='Admin').exists() or user.is_superuser
  
 @login_required
 def home(request):
+    if is_admin(request.user):
+        return redirect('admin_dashboard')
     if is_staff(request.user):
         return redirect('staff_dashboard')
     if is_manager(request.user):
@@ -276,3 +281,17 @@ def all_requests(request):
  
     requests = Request.objects.select_related('user', 'item').order_by('-request_date')
     return render(request, 'inventory/all_requests.html', {'requests': requests})
+
+# Admin role
+@login_required
+def admin_dashboard(request):
+    if not is_admin(request.user):
+        return redirect('home')
+
+    context = {
+        'total_users': User.objects.count(),
+        'total_items': Item.objects.count(),
+        'total_categories': Category.objects.count(),
+        'total_requests': Request.objects.count(),
+    }
+    return render(request, 'inventory/admin_dashboard.html', context)
