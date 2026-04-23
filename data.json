@@ -87,7 +87,7 @@
   { "model": "inventory.item", "pk": 3, "fields": { "name": "Microscope", "description": "Microscope for Biology experiments", "quantity": 10, "category": 2 } },
   { "model": "inventory.item", "pk": 4, "fields": { "name": "Maths Book", "description": "Algebra, Calculus, and Statistics workbook", "quantity": 15, "category": 3 } },
   { "model": "inventory.item", "pk": 5, "fields": { "name": "Bunsen Burner", "description": "Bunsen burner for Chemistry experiments", "quantity": 8, "category": 2 } },
-  { "model": "inventory.item", "pk": 6, "fields": { "name": "Football", "description": "Standard size 5 football for PE classes", "quantity": 12, "category": 4 } },
+  { "model": "inventory.item", "pk": 6, "fields": { "name": "Football", "description": "Football for PE classes", "quantity": 12, "category": 4 } },
   { "model": "inventory.item", "pk": 7, "fields": { "name": "Physics Textbook", "description": "Senior cycle physics textbook", "quantity": 20, "category": 3 } },
 
   { "model": "inventory.request", "pk": 1, "fields": { "user": 3, "item": 1, "status": "PENDING", "request_date": "2026-04-15T17:31:36.778Z" } },
