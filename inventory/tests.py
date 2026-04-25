@@ -35,6 +35,7 @@ class UseCaseTests(TestCase):
         self.item = Item.objects.create(name='Laptop', description='Dell Laptop', quantity=5, category=self.category)
         self.student = make_user('user1', 'Student')
         self.staff = make_user('staff1', 'Staff')
+        self.manager = make_user('manager1', 'Manager') 
 
     def test_item_list_is_visible(self):
         response = self.client.get(reverse('item_list'))
@@ -60,3 +61,8 @@ class UseCaseTests(TestCase):
     def test_login_required_to_make_request(self):
         response = self.client.get(reverse('request_item', args=[self.item.id]))
         self.assertIn('/login/', response['Location'])
+        
+    def test_manager_can_create_item_via_form(self):
+        self.client.login(username='manager1', password='password')
+        self.client.post(reverse('add_item'), {'name': 'Form Test Item','description': 'Created via the add item form','quantity': 5,'category': self.category.id,})
+        self.assertTrue(Item.objects.filter(name='Form Test Item').exists())
