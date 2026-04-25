@@ -1,8 +1,15 @@
 {% extends "inventory/base.html" %}
 {% block title %}All Requests - Assetra{% endblock %}
 {% block content %}
-<a href="/manager/" class="btn btn-secondary mb-3">← Back</a>
-<h2>All Requests</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">All Requests</h2>
+    <div class="d-flex gap-2">
+        <a href="/export_requests/" class="btn btn-success">
+            ⬇ Export to CSV
+        </a>
+        <a href="/manager/" class="btn btn-secondary">← Back</a>
+    </div>
+</div>
 
 {% if requests %}
 <table class="table table-striped table-hover mt-3">
