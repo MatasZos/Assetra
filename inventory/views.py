@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 from .models import Item, Category, Request
 from .forms import ItemForm, CategoryForm
  
+import csv
+from django.http import HttpResponse
+
 def is_staff(user):
     return user.groups.filter(name='Staff').exists()
  
@@ -297,3 +300,30 @@ def admin_dashboard(request):
         'total_requests': Request.objects.count(),
     }
     return render(request, 'inventory/admin_dashboard.html', context)
+
+#advanced feature - Export requests to CSV
+@login_required
+def export_requests_csv(request):
+    if not is_manager(request.user):
+        return redirect('home')
+
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="assetra_requests.csv"'},
+    )
+
+    writer = csv.writer(response)
+    writer.writerow(['ID', 'User', 'Item', 'Category', 'Status', 'Request Date'])
+
+    requests = Request.objects.select_related('user', 'item', 'item__category').order_by('-request_date')
+    for req in requests:
+        writer.writerow([
+            req.id,
+            req.user.username,
+            req.item.name,
+            req.item.category.name,
+            req.status,
+            req.request_date.strftime('%Y-%m-%d %H:%M'),
+        ])
+
+    return response
